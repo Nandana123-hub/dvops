@@ -3,20 +3,19 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 14
     commands:
-      - echo Installing dependencies...
+      - echo "Installing dependencies..."
       - npm install
+
   build:
     commands:
-      - echo "No build step required"
+      - echo "Build phase: nothing to build for basic Node.js app"
+
   post_build:
     commands:
       - echo "Build completed on $(date)"
 
 artifacts:
   files:
-    - app.js
-    - package.json
-    - README.md
-    - dist/**/*    # if applicable
+    - '**/*'
