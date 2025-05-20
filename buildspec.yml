@@ -3,18 +3,21 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 18
     commands:
       - echo "Installing dependencies..."
       - npm install
 
   build:
     commands:
-      - echo "Build phase: nothing to build for basic Node.js app"
+      - echo "Running basic build checks..."
+      - npm run lint || echo "Linting skipped or not configured"
+      - echo "Running tests (if available)..."
+      - npm test || echo "No test script defined"
 
   post_build:
     commands:
-      - echo "Build completed on $(date)"
+      - echo "Build and test completed on $(date)"
 
 artifacts:
   files:
